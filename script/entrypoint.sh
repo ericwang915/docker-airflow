@@ -73,7 +73,8 @@ then
   if [ "$1" = "webserver" ]; then
     echo "Initialize database..."
     $CMD initdb
-    exec $CMD webserver
+    exec $CMD webserver &
+    exec $CMD scheduler
   else
     sleep 10
     exec $CMD "$@"
@@ -97,5 +98,6 @@ else
   sed -i "s#sql_alchemy_conn = postgresql+psycopg2://airflow:airflow@postgres/airflow#sql_alchemy_conn = sqlite:////usr/local/airflow/airflow.db#" "$AIRFLOW_HOME"/airflow.cfg
   echo "Initialize database..."
   $CMD initdb
-  exec $CMD webserver
+  exec $CMD webserver &
+  exec $CMD scheduler
 fi

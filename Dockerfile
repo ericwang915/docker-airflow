@@ -36,6 +36,7 @@ RUN set -ex \
         libpq-dev \
         git \
     ' \
+    && pip install pip==9.0.3\
     && apt-get update -yqq \
     && apt-get install -yqq --no-install-recommends \
         $buildDeps \
@@ -49,7 +50,7 @@ RUN set -ex \
     && locale-gen \
     && update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 \
     && useradd -ms /bin/bash -d ${AIRFLOW_HOME} airflow \
-    && python -m pip install -U pip setuptools wheel \
+    && python -m pip install -U setuptools wheel \
     && pip install Cython \
     && pip install pytz \
     && pip install pyOpenSSL \
@@ -69,7 +70,7 @@ RUN set -ex \
 
 COPY script/entrypoint.sh /entrypoint.sh
 COPY config/airflow.cfg ${AIRFLOW_HOME}/airflow.cfg
-
+COPY dags ${AIRFLOW_HOME}/dags
 RUN chown -R airflow: ${AIRFLOW_HOME}
 
 EXPOSE 8080 5555 8793
