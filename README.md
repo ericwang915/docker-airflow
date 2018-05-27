@@ -1,4 +1,5 @@
 # docker-airflow
+<<<<<<< HEAD
 [![CircleCI branch](https://img.shields.io/circleci/project/puckel/docker-airflow/master.svg?maxAge=2592000)](https://circleci.com/gh/puckel/docker-airflow/tree/master)
 [![Docker Build Status](https://img.shields.io/docker/build/puckel/docker-airflow.svg)]()
 
@@ -86,3 +87,6 @@ This can be used to scale to a multi node setup using docker swarm.
 # Wanna help?
 
 Fork, improve and PR. ;-)
+=======
+docker-airflow
+>>>>>>> 5a148c82d30230b72080ba614f1650eeea16946b
