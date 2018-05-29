@@ -18,10 +18,14 @@ ARG AIRFLOW_HOME=/usr/local/airflow
 # Define en_US.
 ENV LANGUAGE en_US.UTF-8
 ENV LANG en_US.UTF-8
-ENV LC_ALL en_US.UTF-8
+ENV LC_ALL en_US.UTF-8i
 ENV LC_CTYPE en_US.UTF-8
 ENV LC_MESSAGES en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
+
+RUN python -m venv ${AIRFLOW_HOME}/venv
+RUN chmod +x ${AIRFLOW_HOME}/venv/bin/activate
+RUN .${AIRFLOW_HOME}/venv/bin/activate
 
 RUN set -ex \
     && buildDeps=' \
